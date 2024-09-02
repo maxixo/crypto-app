@@ -1,0 +1,82 @@
+import React from 'react'
+import CoinTable from '../components/CoinTable'
+import Trending from '../components/Trending'
+import NewsCard from "../components/NewsCard"
+import Footer from "../components/Footer"
+import Brands from "../components/Brands"
+import Navbar from "../components/Navbar"
+import { useContext } from 'react'
+import { CoinContext } from '../context/CoinContext'
+import { useState, useEffect } from 'react'
+
+
+
+const HomePage = () => {
+
+const {allCoin, currency, setCurrency, trending = [] } = useContext(CoinContext);
+const [displayCoin , setDisplayCoin] = useState([]);
+
+useEffect(() => {
+  setDisplayCoin(allCoin);
+}, [allCoin]);
+
+
+const currencyHandler = (e) => {
+
+    switch (e.target.value){
+      case 'usd': {
+       setCurrency({name:'usd', symbol: '$'});
+       break;
+     }
+     case 'eur': {
+       setCurrency({name:'eur', symbol: '€'});
+       break;
+     }
+     case 'ngn': {
+       setCurrency({name:'ngn', symbol: '₦'});
+       break;
+     }
+     default : {
+       setCurrency({name:'usd', symbol: '$'});
+       break;
+     }
+    }
+  
+  }
+
+
+  return (
+    <div className='min-h-screen flex flex-col'>
+      <div>
+      <Navbar
+         currencyHandler={currencyHandler}
+         />
+      </div>
+         
+         <div className="mt-10">
+         <Trending
+         allCoin={allCoin}
+         trending={trending}
+         />
+         </div>
+         <div className="pt-20">
+         <CoinTable
+         displayCoin={displayCoin}
+         currency={currency}
+         />
+         </div>
+         <div className="flex items-center justify-center mt-10">
+         <h1 className="font-bold text-3xl my-10">Get your daily Crypto News </h1>
+        </div>
+        <div>
+        <NewsCard/>
+        <Brands/>
+        <Footer/>
+        </div>
+     
+
+    </div>
+  )
+}
+
+export default HomePage
