@@ -1,5 +1,6 @@
 import React from 'react'
 import "../styles/Cointable.css"
+import {Link} from "react-router-dom"
 // import { CoinContext } from '../context/CoinContext'
 
 
@@ -14,6 +15,11 @@ const CoinTable = ({displayCoin, currency}) => {
 
 //   console.log(allCoin);
   return (
+    <>
+    <form>
+     <input  type="text"  placeholder='Search Crypto....' required/>
+     <button type="Submit">Search</button>   
+    </form>
     <div className='crypto-table'>
         <div className='table-layout'>
             <p>#</p>
@@ -23,7 +29,7 @@ const CoinTable = ({displayCoin, currency}) => {
             <p className='market-cap'>'Market-cap</p>
         </div>
         {displayCoin.map((item, index) => (
-            <div className="table-layout" key={index}>
+            <Link to={`/coin/${item.id}`} className="table-layout" key={index}>
               <p>{item.market_cap_rank}</p>
                 <div>
                  <img src={item.image} alt="" />
@@ -36,13 +42,14 @@ const CoinTable = ({displayCoin, currency}) => {
                 <p className='market-cap'>
                 {currency.symbol}  {item.market_cap.toLocaleString()} 
                 </p>
-            </div> 
+            </Link> 
          )) 
         
         }
 
 
     </div>
+    </>
   )
 }
 

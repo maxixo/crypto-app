@@ -3,11 +3,13 @@ import CoinTable from '../components/CoinTable'
 import Trending from '../components/Trending'
 import NewsCard from "../components/NewsCard"
 import Footer from "../components/Footer"
+import NavBar from "../components/NavBar"
 import Brands from "../components/Brands"
-import Navbar from "../components/Navbar"
 import { useContext } from 'react'
 import { CoinContext } from '../context/CoinContext'
 import { useState, useEffect } from 'react'
+import { Link } from "react-router-dom"
+
 
 
 
@@ -20,46 +22,46 @@ useEffect(() => {
   setDisplayCoin(allCoin);
 }, [allCoin]);
 
-
+  
 const currencyHandler = (e) => {
 
-    switch (e.target.value){
-      case 'usd': {
-       setCurrency({name:'usd', symbol: '$'});
-       break;
-     }
-     case 'eur': {
-       setCurrency({name:'eur', symbol: '€'});
-       break;
-     }
-     case 'ngn': {
-       setCurrency({name:'ngn', symbol: '₦'});
-       break;
-     }
-     default : {
-       setCurrency({name:'usd', symbol: '$'});
-       break;
-     }
-    }
-  
+  switch (e.target.value){
+    case 'usd': {
+     setCurrency({name:'usd', symbol: '$'});
+     break;
+   }
+   case 'eur': {
+     setCurrency({name:'eur', symbol: '€'});
+     break;
+   }
+   case 'ngn': {
+     setCurrency({name:'ngn', symbol: '₦'});
+     break;
+   }
+   default : {
+     setCurrency({name:'usd', symbol: '$'});
+     break;
+   }
   }
+
+}
+
 
 
   return (
-    <div className='min-h-screen flex flex-col'>
+    <div className='min-h-screen m-10 flex flex-col'>
       <div>
-      <Navbar
-         currencyHandler={currencyHandler}
-         />
+      <NavBar currencyHandler={currencyHandler}/>
+
       </div>
          
-         <div className="mt-10">
+         <div className="mt-10 ">
          <Trending
          allCoin={allCoin}
          trending={trending}
          />
          </div>
-         <div className="pt-20">
+         <div className="pt-20 mx-10">
          <CoinTable
          displayCoin={displayCoin}
          currency={currency}
@@ -68,7 +70,7 @@ const currencyHandler = (e) => {
          <div className="flex items-center justify-center mt-10">
          <h1 className="font-bold text-3xl my-10">Get your daily Crypto News </h1>
         </div>
-        <div>
+        <div className='mx-10'>
         <NewsCard/>
         <Brands/>
         <Footer/>

@@ -8,6 +8,7 @@ const CoinContextProvider = (props) => {
     const [allCoin, setAllCoin] = useState([]);
     const [trending, setTrending] = useState([]);
     const [news, setNews] = useState([]);
+    const [transactions, setTransactions] = useState([]); // Store transactions globally
     const [currency, setCurrency] = useState({
         name: 'usd',
         symbol: '$',
@@ -50,13 +51,40 @@ const CoinContextProvider = (props) => {
     }, []);
 
 
-        
+    
+
+
+    // Function to add a transaction
+    const addTransaction = (coinName, amount, price) => {
+        const selectedCoin = allCoin.find((coin) => coin.name === coinName);
+        if (selectedCoin) {
+          const newTransaction = {
+            name: selectedCoin.name,
+            amount,
+            price: selectedCoin.current_price, // Get current price from allCoin
+          };
+
+        setTransactions([...transactions, newTransaction]);
+
+    };
+
+    
+}
+  // Function to delete a transaction
+  const deleteTransaction = (index) => {
+    const updatedTransactions = transactions.filter((_, i) => i !== index);
+    setTransactions(updatedTransactions);
+  };
+            
             
     const contextValue = {
         allCoin,
         trending, // Ensure this is correctly set
         currency,
         news,
+        transactions,
+        deleteTransaction,
+        addTransaction, // Ensure this is correctly set
         setCurrency,
     };
 

@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import AnimatedCounter from './ui/AnimatedCounter'
 import DoughnutChart from './ui/DoughnutChart'
 import LineChart from '../assets/svg/LineChart'
+import { CoinContext } from '../context/CoinContext'
 
 
 const styles = {
@@ -14,6 +15,13 @@ const styles = {
 
 
 const PortfolioPage = () => {
+
+  const { transactions } = useContext(CoinContext);
+
+  // Calculate the total coins and total amount invested
+  const totalCoins = transactions.reduce((sum, transaction) => sum + transaction.amount, 0);
+  const totalAmountInvested = transactions.reduce((sum, transaction) => sum + (transaction.amount * transaction.price), 0);
+
   return (
         <>
         <div className='flex ml-7 flex-col items-start gap-5'>
@@ -24,23 +32,24 @@ const PortfolioPage = () => {
 
         <section className={styles.totalBalance}>
          <div className={styles.totalBalanceChart}>
-          <DoughnutChart/>
+          <DoughnutChart transactions={transactions}/>
          </div>
         <div className='flex flex-col gap-6'>
               <h2 className='header-2'>
                Wallet Balance :  
               </h2>
               <div className={styles.totalBalanceLabel}>
-                    Total Coins
+                Total Coins
               <p className='total-balance-label'>
-                  </p>
-            <div className={styles.totalBalanceLabel}>
-              <AnimatedCounter />  
-                </div>
-            </div>
-        </div>
-    </section>
-    </div>
+                {totalCoins.toLocaleString()}
+              </p>
+              <div className={styles.totalBalanceLabel}>
+                <AnimatedCounter end={totalAmountInvested} />
+              </div>
+           </div>
+         </div>
+      </section>
+      </div>
     
     
       </>

@@ -1,3 +1,4 @@
+import { useContext } from'react'
 import { Route, Routes} from "react-router-dom"
 import SignUp from "./pages/SignUp"
 import SignIn from "./pages/SignIn"
@@ -11,9 +12,14 @@ import Compare from "./pages/Compare"
 
 function App() {
 
+
+
+
+
+
   return (
     <>
-    
+        
         
          
        <Routes>
@@ -22,7 +28,7 @@ function App() {
     <Route path="/trending" element={<RecentlyAdded/>}/>
     <Route path="/portfolio" element={<Portfolio/>}/>
     <Route path="/dashboard" element={ <DashboardPage/>}  />
-    <Route path="/coinpage" element={ <CoinPage/>}  />
+    <Route path="/coin/:id" element={ <CoinPage/>}  />
     <Route path="/compare" element={ <Compare/>}  />
 
 

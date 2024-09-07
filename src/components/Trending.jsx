@@ -72,16 +72,16 @@ const [checked, setChecked] = useState(false)
   return (
     <div className='text-white' id="trend" >
       <div className={styles.trendingWrapper}>
-         <div className='flex justify-between'>
+         <div className='flex justify-between px-20'>
             <h1 className={styles.h1}>Todays cryptcurrency prices</h1>
         
-         <div className='flex'>
+         <div className='flex '>
           <p className='text-gray-400 text-lg'>Highlights &nbsp; </p> 
            <ReactSwitch checked={checked} onChange={() =>{setChecked(!checked)} }/>
          </div>
          </div>
          <br/>
-         <div className='flex'>
+         <div className='flex pl-20 '>
            <p className='text-gray-400'>The global cryptomarket cap is 
             $1.74T, a &nbsp;
            <span><Rate isIncrement={true} rate='0.53'/></span>
@@ -100,7 +100,9 @@ const [checked, setChecked] = useState(false)
                  </div>
 
           ))} */}
-           <TrendingCard className="h-[50vh]" title = 'Gaining' icon = {fire}
+
+        <div className='flex flex-col  lg:flex-row mx-auto gap-10'>
+          <TrendingCard className="h-[50vh]" title = 'Gaining' icon = {fire}
             trendingData = {allCoin} />
 
           {/* <TrendingCard title = 'Gaining' icon = {fire}
@@ -115,6 +117,11 @@ const [checked, setChecked] = useState(false)
             <TrendingCard title = 'Gainers' icon = {gainers}
            trendingData = {trending} /> 
          
+
+
+          </div>
+        
+       
 
 
 
