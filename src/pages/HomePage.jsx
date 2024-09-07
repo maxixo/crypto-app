@@ -3,7 +3,7 @@ import CoinTable from '../components/CoinTable'
 import Trending from '../components/Trending'
 import NewsCard from "../components/NewsCard"
 import Footer from "../components/Footer"
-import NavBar from "../components/NavBar"
+import Navbar from "../components/Navbar"
 import Brands from "../components/Brands"
 import { useContext } from 'react'
 import { CoinContext } from '../context/CoinContext'
@@ -51,7 +51,7 @@ const currencyHandler = (e) => {
   return (
     <div className='min-h-screen m-10 flex flex-col'>
       <div>
-      <NavBar currencyHandler={currencyHandler}/>
+      <Navbar currencyHandler={currencyHandler}/>
 
       </div>
          
