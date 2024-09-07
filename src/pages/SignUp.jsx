@@ -3,11 +3,7 @@ import React from "react";
 import { Label } from "../components/ui/Label";
 import { Input } from "../components/ui/Input";
 import { cn } from  '../../src/utils/utils';
-import {
-  IconBrandGithub,
-  IconBrandGoogle,
-  IconBrandOnlyfans,
-} from "@tabler/icons-react";
+
 import LineChart from "../assets/svg/LineChart";
 import { Link } from "react-router-dom";
 
