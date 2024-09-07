@@ -3,7 +3,7 @@ import {useParams} from 'react-router-dom'
 import { CoinContext } from '../context/CoinContext';
 import "../styles/coin.css"
 import LineChart from '../components/LineChart';
-import Navbar from '../components/NavBar';
+import Navbar from '../components/Navbar';
 
 const CoinPage = () => {
 
