@@ -15,9 +15,9 @@ const Navbar = ({currencyHandler}) => {
 
   return (
     <header className='flex justify-between items-center text-black py-6 px-8 md:px-32  drop-shadow-md'>
-      <a href="">
+      <Link to="/">
         <img src={logo} className='w-52 h-50 hover:scale-105 transition-all' alt="logo" />
-      </a>
+      </Link>
 
       <ul className='hidden text-black xl:flex items-center gap-12 ml-5 font-semibold text-base'>
       <li className='p-3  hover:bg-sky-400 hover:text-white rounded-md transition-all cursor pointer'>
