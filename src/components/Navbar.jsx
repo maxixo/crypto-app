@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import logo from '../assets/logo.png';
+import logo from '../assets/Logo.png';
 import "../styles/Navbar.css"
 import { Link } from 'react-router-dom';
 
@@ -8,9 +8,7 @@ const Navbar = ({currencyHandler}) => {
   // const navigate = useNavigate();
   const [isMenuOpen, setisMenuOpen] = useState(false);
 
-   
-
-  
+     
 
 
   return (
