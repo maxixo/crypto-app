@@ -42,7 +42,7 @@ import "../styles/DashboardPage.css";
      
       <form
         onSubmit={handleSubmit}
-        className='flex justify-center align-center gap-10'
+        className='flex justify-center relative bottom-20 align-center gap-10'
       >
         {/* First input for coin name from API (read-only) */}
         <div>
@@ -79,9 +79,9 @@ import "../styles/DashboardPage.css";
         {/* Button to add the transaction */}
         <button type="submit">Add Transaction</button>
       </form>
-       <div className='flex flex-col gap-5 border-red-400 border-2 mx-auto'>
+       <div className='flex flex-col gap-5 relative bottom-20 border-red-400 border-2 mx-auto'>
             {/* Display list of transactions */}
-      <h3 className='flex align-center mx-auto pt-5'>Transactions</h3>
+      <h3 className='flex justify-center mx-auto items-center'>Transactions</h3>
       <table className="transaction-table">
         <thead>
           <tr>

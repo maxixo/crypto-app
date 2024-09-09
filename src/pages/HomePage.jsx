@@ -48,7 +48,7 @@ const currencyHandler = (e) => {
 
 
   return (
-    <div className='min-h-screen m-10 flex flex-col'>
+    <div className='min-h-screen   flex flex-col'>
       <div>
       <Navbar currencyHandler={currencyHandler}/>
 

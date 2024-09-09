@@ -10,6 +10,12 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   darkMode: "class",
   theme: {
+    // screens: {
+    //   'sm': '640px',
+    //   // => @media (min-width: 640px) { ... }
+
+  
+    // },
     // rest of the code
     extend: {
       colors: {

@@ -101,7 +101,7 @@ const [checked, setChecked] = useState(false)
 
           ))} */}
 
-        <div className='flex flex-col  lg:flex-row mx-auto w-full gap-10'>
+        <div className='flex flex-col sm:w-[80vh] lg:w-full  lg:flex-row mx-auto w-full gap-10'>
           <TrendingCard  title = 'Gaining' icon = {fire}
             trendingData = {allCoin} />
 

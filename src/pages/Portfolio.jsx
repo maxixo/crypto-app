@@ -126,7 +126,7 @@ export const LogoIcon = () => {
 // Dummy dashboard component with content
 const Dashboard = () => {
   return (
-    <div className="border-2 border-black w-full " >
+    <div className="border-2 border-black w-full sm:overflow-scroll overflow-y-scroll" >
         <PortfolioPage/>
         <DashboardPage/>
     </div>

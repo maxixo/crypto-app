@@ -22,12 +22,12 @@ const PortfolioPage = () => {
   return (
         <>
         <div className='flex ml-7 flex-col items-start gap-5'>
-      <div className='flex gap-3 mt-10 items-center ml-7'> 
-        <h2 className='text-4xl '>Welcome back to your portfolio</h2>
+      <div className='flex gap-3 mt-5 items-center ml-7'> 
+        <h2 className='text-3xl '>Welcome back to your portfolio</h2>
         <LineChart/>
       </div>
 
-        <section className='flex flex-row items-center gap-10'>
+        <section className='flex relative bottom-12 flex-row items-center gap-5'>
          <div className='flex w-15'>
           <DoughnutChart/>
          </div>
