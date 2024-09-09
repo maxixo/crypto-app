@@ -1,35 +1,43 @@
 import React, { useState, useContext } from 'react';
 import { CoinContext } from "../context/CoinContext"; // Import your context
 import "../styles/DashboardPage.css";
-
-const DashboardPage = () => {
-  const { allCoin,  addTransaction, transactions, deleteTransaction } = useContext(CoinContext); // Access CoinData from context
-  const [selectedCoin, setSelectedCoin] = useState('');
-  const [amount, setAmount] = useState(0);
-
-    // Find the selected coin's current price from allCoin
-    const selectedCoinData = allCoin.find((coin) => coin.name === selectedCoin);
-    const currentPrice = selectedCoinData ? selectedCoinData.current_price : 0;
+import { useAddTransaction } from '../hooks/useAddTransaction';
+import {useGetTransactions } from '../hooks/useGetTransactions';
 
 
-  // Calculate total coins and total amount invested
-  const totalCoins = transactions.reduce((sum, transaction) => sum + Number(transaction.amount), 0);
-  const totalAmountInvested = transactions.reduce((sum, transaction) => sum + (transaction.amount * transaction.price), 0);
+    const DashboardPage = () => {
+      const { allCoin,
+              handleAddTransaction,
+              pricePerCoin,
+              handleSelectCoin,
+              selectedCoin,
+              setSelectedCoin, 
+              handleDeleteTransaction,
+              totalCoins,
+              transactions,
+              totalAmountInvested, } = useContext(CoinContext); // Access CoinData from context
 
+    const [amount, setAmount] = useState(0);
+    
 
   
 
   // Handle form submission to add transaction
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Add the transaction through context function
-    addTransaction(selectedCoin, amount);
+    if (!selectedCoin || amount <= 0) {
+      alert('Please select a valid coin and enter a valid amount.');
+      return;
+    }
+
+    await handleAddTransaction({ selectedCoin, amount , pricePerCoin});
 
     // Clear the input fields after adding the transaction
-    setSelectedCoin('');  // Clear the coin name input
-    setAmount(0);         // Clear the amount input
+    setSelectedCoin('');
+    setAmount(0);
   };
+
   return (
     <div className='h-full min-h-screen '>
      
@@ -43,9 +51,11 @@ const DashboardPage = () => {
           <input
             list="coin-list"
             value={selectedCoin}
-            onChange={(e) => setSelectedCoin(e.target.value)}
+            onChange={(e) => handleSelectCoin(e.target.value)} // Call handleSelectCoin to update coin and price
             required
           />
+
+
          <datalist id="coin-list">
             {/* Map through the CoinData to populate the datalist */}
             {allCoin?.map((coin) => (
@@ -84,15 +94,15 @@ const DashboardPage = () => {
           </tr>
         </thead>
         <tbody>
-          {transactions.map((transaction, index) => (
-            <tr key={index}>
-              <td>{transaction.name}</td>
+          {transactions.map((transaction) => (
+            <tr key={transaction.id}>
+              <td>{transaction.selectedCoin}</td>
               <td>{transaction.amount}</td>
-              <td>${transaction.price.toFixed(2)}</td>
-              <td>${(transaction.amount * transaction.price).toFixed(2)}</td>
+              <td>${transaction.pricePerCoin.toFixed(2)}</td>
+              <td>${(transaction.amount * transaction.pricePerCoin).toFixed(2)}</td>
               <td>
-                <button
-                  onClick={() => deleteTransaction(index)}
+              <button
+                  onClick={() => handleDeleteTransaction(transaction.id)} // Pass transaction id
                   className="delete-button"
                 >
                   Delete
@@ -109,7 +119,7 @@ const DashboardPage = () => {
             <td><strong>${totalAmountInvested.toFixed(2)}</strong></td>
             <td></td>
           </tr>
-        </tbody>
+        </tbody> 
       </table>
        </div>
    

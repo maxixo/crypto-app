@@ -36,13 +36,13 @@ const Navbar = ({currencyHandler}) => {
         </li>
       </ul>
 
-      <div className='relative text-black left-10   items-center justify-center'>
+      <div className='relative text-black left-10 flex  items-center justify-center'>
       <select onChange={currencyHandler}   >
           <option value='usd'>USD</option>
           <option value='eur'>EUR</option>
           <option value='ngn'>NGN</option>
         </select>
-        <Link to="/sign-up" className=' text-black p-5 m-2 bg-gray-200 rounded-xl'
+        <Link to="/sign-up" className=' text-black sm:hidden lg:block p-5 m-2 bg-gray-200 rounded-xl'
         >Sign Up</Link>
         <Link to="/sign-in" className='p-5 m-2 text-black bg-gray-200 rounded-xl'>Sign In</Link>
      

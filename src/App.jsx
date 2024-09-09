@@ -7,7 +7,6 @@ import HomePage from "./pages/HomePage"
 import Portfolio from "./pages/Portfolio"
 import DashboardPage from "./pages/DashboardPage"
 import CoinPage from "./pages/CoinPage"
-import Compare from "./pages/Compare"
 
 
 function App() {
@@ -29,7 +28,6 @@ function App() {
     <Route path="/portfolio" element={<Portfolio/>}/>
     <Route path="/dashboard" element={ <DashboardPage/>}  />
     <Route path="/coin/:id" element={ <CoinPage/>}  />
-    <Route path="/compare" element={ <Compare/>}  />
 
 
 

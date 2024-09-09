@@ -104,5 +104,3 @@ const fetchHistoricalData = async () => {
 }
 }
 export default CoinPage
-
-

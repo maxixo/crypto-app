@@ -5,22 +5,19 @@ import LineChart from '../assets/svg/LineChart'
 import { CoinContext } from '../context/CoinContext'
 
 
-const styles = {
-  totalBalance: ` flex w-[40vw] items-center mt-5 ml-5 gap-4 rounded-xl border border-gray-200 p-4 shadow-chart sm:gap-6 sm:p-6;`,
-  totalBalanceChart: `flex size-full max-w-[100px] items-center sm:max-w-[120px];`,
-  totalBalanceLabel: `text-14 font-medium text-gray-600;`,
-  totalBalanceAmount: `text-24 lg:text-30 flex-1 font-semibold text-gray-900;`,
+// const styles = {
+//   totalBalance: ` flex w-[40vw] h-[50vh] items-center h-[50vh] gap-4 rounded-xl border border-gray-200 p-4 shadow-chart sm:gap-6 sm:p-6;`,
+//   totalBalanceChart: `flex size-full max-w-[100px] items-center sm:max-w-[120px];`,
+//   // totalBalanceLabel: `h-[50vh] text-14 font-medium text-gray-600;`,
+//   totalBalanceAmount: `text-24 lg:text-30 flex-1 font-semibold text-gray-900;`,
 
-}
+// }
 
 
 const PortfolioPage = () => {
-
-  const { transactions } = useContext(CoinContext);
+   const {totalCoins} = useContext(CoinContext);
 
   // Calculate the total coins and total amount invested
-  const totalCoins = transactions.reduce((sum, transaction) => sum + transaction.amount, 0);
-  const totalAmountInvested = transactions.reduce((sum, transaction) => sum + (transaction.amount * transaction.price), 0);
 
   return (
         <>
@@ -30,22 +27,21 @@ const PortfolioPage = () => {
         <LineChart/>
       </div>
 
-        <section className={styles.totalBalance}>
-         <div className={styles.totalBalanceChart}>
-          <DoughnutChart transactions={transactions}/>
+        <section className='flex flex-row items-center gap-10'>
+         <div className='flex w-15'>
+          <DoughnutChart/>
          </div>
         <div className='flex flex-col gap-6'>
               <h2 className='header-2'>
                Wallet Balance :  
               </h2>
-              <div className={styles.totalBalanceLabel}>
+              <div>
                 Total Coins
               <p className='total-balance-label'>
                 {totalCoins.toLocaleString()}
               </p>
-              <div className={styles.totalBalanceLabel}>
-                <AnimatedCounter end={totalAmountInvested} />
-              </div>
+                <AnimatedCounter end className="h-full" />
+            
            </div>
          </div>
       </section>

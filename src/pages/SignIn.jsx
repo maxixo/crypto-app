@@ -9,12 +9,39 @@ import {
 } from "@tabler/icons-react";
 import LineChart from "../assets/svg/LineChart";
 import { Link } from "react-router-dom";
+import {auth, provider} from "../../src/config/firebase-config";
+import {signInWithPopup} from 'firebase/auth'
+import {useNavigate, Navigate} from "react-router-dom"
+import {useGetUserInfo} from '../hooks/useGetUserInfo'
+
 
 export function SignIn() {
+  const navigate = useNavigate();
+  const {isAuth} = useGetUserInfo();
+
+   const signInWithGoogle = async () => {
+      const results = await signInWithPopup(auth, provider);
+      const authInfo = {
+        userID: results.user.uid,
+        name: results.user.displayName, 
+        profilePhoto: results.user.photoURL,
+        isAuth: true,
+      };
+
+      localStorage.setItem('auth', JSON.stringify(authInfo));
+      navigate('/portfolio');
+    
+   }
+
+  if (isAuth) {
+    return <Navigate to="/portfolio"/>
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submitted");
   };
+
   // md:mb-10 
   return (
     <div className="flex flex-col justify-between w-[100vw] gap-2  ">
@@ -61,7 +88,7 @@ export function SignIn() {
               className="text-blue-500 text-large font-bold ml-1">Sign Up</Link>
               </p>
           </div>
-        <div className="flex flex-col space-y-4">
+        <div className="flex flex-col space-y-4"  onClick={signInWithGoogle}>
           <button
             className=" relative mx-auto group/btn flex space-x-2 items-center justify-center px-4 w-1/2 text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
             type="submit">

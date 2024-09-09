@@ -3,7 +3,7 @@ export const fetchNews = async () => {
     const options = {
         method: 'GET',
         headers: {
-            'x-rapidapi-key': '8d33050fd0msh4dcea863ee1a539p1f68c6jsn135609f1ff27',
+            'x-rapidapi-key': 'fba2c0d095mshb32ae2011c9d9ffp1c2764jsne56fe36e1774',
             'x-rapidapi-host': 'news-api14.p.rapidapi.com',
         },
     };

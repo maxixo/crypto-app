@@ -17,8 +17,6 @@ const CoinTable = ({displayCoin, currency}) => {
   return (
     <>
     <form>
-     <input  type="text"  placeholder='Search Crypto....' required/>
-     <button type="Submit">Search</button>   
     </form>
     <div className='crypto-table'>
         <div className='table-layout'>

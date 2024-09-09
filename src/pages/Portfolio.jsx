@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import {signOut} from "firebase/auth";
+import {auth} from "../config/firebase-config"
 import { Sidebar, SidebarBody, SidebarLink } from "../components/ui/Sidebar";
 import {
   IconArrowLeft,
@@ -6,38 +8,59 @@ import {
   IconSettings,
   IconUserBolt,
 } from "@tabler/icons-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { cn } from "../utils/utils";
 import PortfolioPage from "../components/PortfolioPage";
 import myLogo from "../assets/Logo.png"
 import DashboardPage from "./DashboardPage";
-
+import {useGetUserInfo} from "../hooks/useGetUserInfo"
 export function Portfolio() {
+  const navigate = useNavigate();
+
+  const {name, profilePhoto} = useGetUserInfo()
+
+  const signout = async () => {
+    try{
+       await signOut(auth);
+      localStorage.clear();
+      console.log('user has signed out');
+      navigate('/sign-in');
+    }  
+    catch (err) {
+      console.error(err);
+    }
+  
+  }
+
   const links = [
     {
       label: "Dashboard",
-      href: "/dashboard",
+      href: "#",
       icon: (
         <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
     {
       label: "Coins",
-      href: "/coinpage",
+      href: "#",
       icon: (
         <IconUserBolt className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
     {
       label: "Compare",
-      href: "/compare",
+      href: "#",
       icon: (
         <IconSettings className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
     {
       label: "Logout",
-      href: "/",
+      href: "#",
+      onClick: (e) => {
+        e.preventDefault(); // Prevent default link behavior
+        signout(); // Call the signout function
+      },
       icon: (
         <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
@@ -57,18 +80,19 @@ export function Portfolio() {
             {open ? <Logo /> : <LogoIcon />}
             <div className="mt-8 flex flex-col gap-2">
               {links.map((link, idx) => (
-                <SidebarLink key={idx} link={link} />
+                <SidebarLink key={idx} link={link}      onClick={link.onClick ? link.onClick : () => setOpen(false)} // Close sidebar or execute onClick
+/>
               ))}
             </div>
           </div>
           <div>
             <SidebarLink
               link={{
-                label: "Manu Arora",
+                label: name,
                 href: "#",
                 icon: (
                  <img
-                    src="https://assets.aceternity.com/manu.png"
+                    src={profilePhoto}
                     className="h-7 w-7 flex-shrink-0 rounded-full"
                     width={50}
                     height={50}
