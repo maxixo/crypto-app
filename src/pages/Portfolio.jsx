@@ -14,6 +14,7 @@ import PortfolioPage from "../components/PortfolioPage";
 import myLogo from "../assets/Logo.png"
 import DashboardPage from "./DashboardPage";
 import {useGetUserInfo} from "../hooks/useGetUserInfo"
+
 export function Portfolio() {
   const navigate = useNavigate();
 

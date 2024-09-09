@@ -1,8 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { CoinContext } from "../context/CoinContext"; // Import your context
 import "../styles/DashboardPage.css";
-import { useAddTransaction } from '../hooks/useAddTransaction';
-import {useGetTransactions } from '../hooks/useGetTransactions';
+
 
 
     const DashboardPage = () => {

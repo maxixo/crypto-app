@@ -8,7 +8,6 @@ import Brands from "../components/Brands"
 import { useContext } from 'react'
 import { CoinContext } from '../context/CoinContext'
 import { useState, useEffect } from 'react'
-import { Link } from "react-router-dom"
 
 
 
