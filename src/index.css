@@ -6,8 +6,8 @@ body {
     background: rgb(150,175,199);
     background: linear-gradient(87deg, rgba(150,175,199,1) 25%, rgba(119,111,177,1) 91%);
     width:100vw;
-    overflow-x: hidden;
-    margin:0;
+    overflow-x:hidden;
+  
 
 
 }

@@ -101,7 +101,7 @@ const [checked, setChecked] = useState(false)
 
           ))} */}
 
-        <div className='flex flex-col sm:w-[80vh] lg:w-full  lg:flex-row mx-auto w-full gap-10'>
+        <div className='flex flex-col sm:w-[80vh] lg:w-full p-5 lg:flex-row mx-auto w-full gap-10'>
           <TrendingCard  title = 'Gaining' icon = {fire}
             trendingData = {allCoin} />
 
@@ -113,9 +113,9 @@ const [checked, setChecked] = useState(false)
 
            <TrendingCard title = 'Categories' icon = {recent}
            trendingData = {trending} />
-
+{/* 
             <TrendingCard title = 'Gainers' icon = {gainers}
-           trendingData = {trending} /> 
+           trendingData = {trending} />  */}
          
 
 
