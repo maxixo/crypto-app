@@ -28,9 +28,15 @@ const Navbar = ({currencyHandler}) => {
         <li className='p-3 hover:bg-sky-400 hover:text-white rounded-md transition-all cursor pointer'>
            Cryptocurrency
         </li>
+        <Link
+        to ="/sign-in"
+        >
+
         <li id="trend" className='p-3 hover:bg-sky-400 hover:text-white rounded-md transition-all cursor pointer'>
            Portfolio
         </li>
+        </Link>
+       
         <li className='p-3 hover:bg-sky-400 hover:text-white rounded-md transition-all cursor pointer'>
            News
         </li>
@@ -57,10 +63,10 @@ const Navbar = ({currencyHandler}) => {
         style={{transition: 'transform 0.3s ease, opacity 0.3s ease'}}>
         <ul >
           <li className='p-3 hover:bg-sky-400 hover:text-white rounded-md transition-all cursor-pointer'>
-            CryptoCurrencies
+            Home
           </li>
           <li className='p-3 hover:bg-sky-400 hover:text-white rounded-md transition-all cursor-pointer'>
-            Home
+          CryptoCurrencies
           </li>
           <li className='p-3 hover:bg-sky-400 hover:text-white rounded-md transition-all cursor-pointer'>
             About

@@ -11,7 +11,7 @@ const styles = {
 }
 
 const TrendingCardRow = ({
-    number , image, name , rate, price24, currentprice, 
+    number , image, name , price24, currentprice, 
 
   }) => {
   return (
@@ -25,8 +25,8 @@ const TrendingCardRow = ({
           </p>
     </div>
     <p>{currentprice}</p>
-    <div className='flex items-center gap-4'>
-    <p>{price24}</p>
+    <div className='flex items-center gap-5 pr-5'> 
+     <p className=''>{price24.toFixed(2)}% </p> 
     <p  className >{price24  > 0 ? <ChevronUp fill='#17C784'/> : <ChevronDown fill='#EA3943'/>  }</p>
     </div>
   

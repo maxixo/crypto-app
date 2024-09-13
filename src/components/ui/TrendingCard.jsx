@@ -35,6 +35,8 @@ const TrendingCard = ({title, icon, trendingData}) => {
     // If trendingData is already an array or not an object, use it directly
     trendingDataArray = Array.isArray(trendingData) ? trendingData : [];
   }
+
+  console.log(trendingDataArray);
   return (
     <div className={styles.trendingCard}>
         <div className={styles.trendingWrapper}>
@@ -44,7 +46,10 @@ const TrendingCard = ({title, icon, trendingData}) => {
                &nbsp; &nbsp;
                <p className='font-bold'>{title}</p>   
           </div>
+          <div className='flex items-center gap-4'>
+          <h2>24H</h2>
           <MoreButton />
+          </div>
           </div>
           <br/>
           {trendingDataArray.map((item, id) => {
@@ -56,7 +61,9 @@ const TrendingCard = ({title, icon, trendingData}) => {
                 name={item.name}
                 icon={item.icon}
                 image={item.image|| item.thumb}
-                price24={item.price_change_percentage_24h}
+                price24={item.price_change_percentage_24h || item.
+                  floor_price_24h_percentage_change
+                   }
                 currentprice={item.currentprice}
                       
   

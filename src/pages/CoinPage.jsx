@@ -48,7 +48,7 @@ const fetchHistoricalData = async () => {
     fetchHistoricalData()
   }, [currency])
 
-  if (coinData, historicalData) {
+  if (coinData && historicalData) {
   return (
 
   
@@ -60,8 +60,7 @@ const fetchHistoricalData = async () => {
       ) : (
         <p>Loading or no image available</p>
       )}
-       <p><b>{coinData?.name}({coinData.symbol?.toUpperCase})</b></p>
-      </div>
+      <p><b>{coinData?.name} ({coinData.symbol?.toUpperCase()})</b></p>      </div>
        <div className="coin-chart">
         <LineChart historicalData={historicalData}/>
        </div>
