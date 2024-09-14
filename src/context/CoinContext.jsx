@@ -101,22 +101,15 @@ const CoinContextProvider = (props) => {
             setTransactions((prevTransactions) => 
               prevTransactions.filter(transaction => transaction.id !== transactionId)
             );
+            console.log('Transaction deleted from UI and Firestore!');
+
           } catch (error) {
             console.error("Error deleting transaction: ", error);
           }
         };
 
 
-        // // Inside useEffect in CoinContext
-        // useEffect(() => {
-        //     const loadTransactions = async () => {
-        //         const fetchedTransactions = await getTransactions(); // Now this will correctly fetch transactions
-        //         setTransactions(fetchedTransactions); // Set the fetched transactions to state
-        //     };
-
-        //     loadTransactions();
-        // }, []);
-
+    
         
         useEffect(() => {
             const calculatedTotalCoins = transactions.reduce((sum, transaction) => sum + Number(transaction.amount), 0);
@@ -149,11 +142,6 @@ const CoinContextProvider = (props) => {
           }, [transactions, totalCoins]);
 
           
-  // Function to delete a transaction
-//   const deleteTransaction = (index) => {
-//     const updatedTransactions = transactions.filter((_, i) => i !== index);
-//     setTransactions(updatedTransactions);
-//   };
             
             
     const contextValue = {

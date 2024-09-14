@@ -3,6 +3,7 @@ import AnimatedCounter from './ui/AnimatedCounter'
 import DoughnutChart from './ui/DoughnutChart'
 import LineChart from '../assets/svg/LineChart'
 import { CoinContext } from '../context/CoinContext'
+import { useGetUserInfo } from '../hooks/useGetUserInfo'
 
 
 // const styles = {
@@ -14,8 +15,11 @@ import { CoinContext } from '../context/CoinContext'
 // }
 
 
+
 const PortfolioPage = () => {
    const {totalCoins} = useContext(CoinContext);
+   const {name} = useGetUserInfo()
+
 
   // Calculate the total coins and total amount invested
 
@@ -23,24 +27,24 @@ const PortfolioPage = () => {
         <>
         <div className='flex ml-7 flex-col items-start gap-5'>
       <div className='flex gap-3 mt-5 items-center ml-7'> 
-        <h2 className='text-3xl '>Welcome back to your portfolio</h2>
-        <LineChart/>
+        <h2 className='text-3xl flex gap-3'>Welcome back to your portfolio <p className='text-gray-500 flex'>{name}!</p> </h2>
       </div>
 
-        <section className='flex relative bottom-12 flex-row items-center gap-5'>
+        <section className='flex relative bottom-8 flex-row items-center gap-5'>
          <div className='flex w-15'>
           <DoughnutChart/>
          </div>
-        <div className='flex flex-col gap-6'>
-              <h2 className='header-2'>
-               Wallet Balance :  
+        <div className='flex flex-row gap-6'>
+              <h2 className='header-2 font-medium'>
+               Wallet Balance :
+               <AnimatedCounter end className="h-full" />
+  
               </h2>
-              <div>
+              <div className='font-medium'>
                 Total Coins
               <p className='total-balance-label'>
                 {totalCoins.toLocaleString()}
               </p>
-                <AnimatedCounter end className="h-full" />
             
            </div>
          </div>

@@ -49,7 +49,7 @@ import "../styles/DashboardPage.css";
           <label>Coin Name:</label>
           <input
             list="coin-list"
-            value={selectedCoin}
+            value={selectedCoin || " "}
             onChange={(e) => handleSelectCoin(e.target.value)} // Call handleSelectCoin to update coin and price
             required
           />
@@ -70,7 +70,7 @@ import "../styles/DashboardPage.css";
           <label>Amount Invested:</label>
           <input
             type="number"
-            value={amount}
+            value={amount || ""}
             onChange={(e) => setAmount(e.target.value)}
             required
           />
@@ -79,9 +79,9 @@ import "../styles/DashboardPage.css";
         {/* Button to add the transaction */}
         <button type="submit">Add Transaction</button>
       </form>
-       <div className='flex flex-col gap-5 relative bottom-20 border-red-400 border-2 mx-auto'>
+       <div className='flex flex-col gap-5 relative bottom-20  mx-auto'>
             {/* Display list of transactions */}
-      <h3 className='flex justify-center mx-auto items-center'>Transactions</h3>
+      <h3 className='flex justify-center mx-auto mt-5 text-2xl underline font-semibold items-center'>Wallet History</h3>
       <table className="transaction-table">
         <thead>
           <tr>
@@ -112,7 +112,7 @@ import "../styles/DashboardPage.css";
 
           {/* Display totals */}
           <tr className="totals-row">
-            <td><strong>Totals:</strong></td>
+            <td><strong>Total:</strong></td>
             <td><strong>{totalCoins}</strong></td>
             <td></td>
             <td><strong>${totalAmountInvested.toFixed(2)}</strong></td>

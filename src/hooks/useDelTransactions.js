@@ -3,20 +3,32 @@ import { db } from "../config/firebase-config";  // Make sure the Firebase confi
 
 
 export const useDeleteTransaction = () => {
-    const deleteTransaction = async (transactionId) => {
-      try {
-        // Create a reference to the document you want to delete in the "transactions" collection
-        const docRef = doc(db, 'transactions', transactionId);
-  
-        // Delete the document from Firestore
-        await deleteDoc(docRef);
-  
-        console.log('Transaction deleted successfully!');
-      } catch (error) {
-        console.error('Error deleting transaction: ', error);
+  const deleteTransaction = async (transactionId) => {
+    try {
+      if (!transactionId) {
+        throw new Error('Transaction ID is required');
       }
-    };
-  
-    return { deleteTransaction };
+
+      // Log the transaction ID to ensure it's correct
+      console.log('Attempting to delete transaction with ID:', transactionId);
+
+      // Reference to the document
+      const docRef = doc(db, 'transactions', transactionId);
+      
+      // Check if the document exists before attempting to delete it
+      const docSnapshot = await getDoc(docRef);
+      if (!docSnapshot.exists()) {
+        throw new Error('Document does not exist');
+      }
+
+      // Delete the document
+      await deleteDoc(docRef);
+
+      console.log('Transaction deleted successfully!');
+    } catch (error) {
+      console.error('Error deleting transaction: ', error);
+    }
   };
-  
+
+  return { deleteTransaction };
+};

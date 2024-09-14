@@ -29,7 +29,7 @@ const [checked, setChecked] = useState(false)
       <div className={styles.trendingWrapper}>
          <div className='flex justify-between px-20'>
             <h1 className={styles.h1}>Todays cryptcurrency prices</h1>
-        c
+        
          <div className='flex '>
           <p className='text-white text-lg '>Highlights &nbsp; </p> 
            <ReactSwitch  className='sm:hidden lg:visible' checked={checked} onChange={() =>{setChecked(!checked)} }/>
